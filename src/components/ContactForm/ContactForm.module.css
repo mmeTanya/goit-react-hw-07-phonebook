@@ -1,0 +1,118 @@
+.form {
+  margin: 0 auto;
+  border: 3px solid rgb(109, 140, 231);
+  width: 55%;
+  padding: 50px;
+  background-color: rgb(107, 201, 248);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.form__field {
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.form__label {
+  color: #000;
+  width: 45%;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 1.62;
+  letter-spacing: 0.03em;
+  margin-right: 15px;
+}
+
+.form__input {
+  background-color: #6ce3fe;
+  border: 3px solid rgb(104, 130, 224);
+  border-radius: 4px;
+  outline-style: none;
+  width: 55%;
+  height: 50px;
+  color: #000;
+  animation-name: changeBorderColor;
+  animation-duration: 5000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.form__input:hover,
+.form__input:focus {
+  border: 3px solid #22187e;
+  box-shadow: 1px 4px 6px #22187e;
+  transform: scale(1.1);
+  overflow: hidden;
+  animation-play-state: paused;
+}
+
+@keyframes changeBorderColor {
+  0% {
+    border: 3px solid teal;
+  }
+
+  50% {
+    border: 3px solid rgb(25, 25, 118);
+  }
+
+  100% {
+    border: 3px solid deepskyblue;
+  }
+}
+
+.form__btn {
+  background-color: #6ce3fe;
+  border: 3px solid rgb(104, 130, 224);
+  border-radius: 4px;
+  width: 200px;
+  color: #000;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.62;
+  letter-spacing: 0.03em;
+  animation-name: changeBgColor;
+  animation-duration: 5000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.form__btn:hover,
+.form__btn:focus {
+  color: #6ce3fe;
+  border: 3px solid #22187e;
+  box-shadow: 1px 4px 6px #22187e;
+  transform: scale(1.4);
+  overflow: hidden;
+  animation-play-state: paused;
+}
+
+@keyframes changeBgColor {
+  0% {
+    background-color: teal;
+  }
+
+  50% {
+    background-color: rgb(25, 25, 118);
+  }
+
+  100% {
+    background-color: deepskyblue;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .form__label {
+    font-size: 18px;
+  }
+
+  .form__input {
+    height: 30px;
+  }
+
+  .form__btn {
+    width: 180px;
+  }
+}
