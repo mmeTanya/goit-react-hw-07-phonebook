@@ -6,14 +6,14 @@ import s from './ContactForm.module.css';
 
 function ContactForm() {
   const contacts = useSelector(contactsSelectors.getVisibleContacts);
-  const [contact, setContact] = useState({ name: '', number: '' });
+  const [newContact, setNewContact] = useState({ name: '', number: '' });
 
   const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.target;
 
-    setContact(prevState => ({
+    setNewContact(prevState => ({
       ...prevState,
       [name]: value,
     }));
@@ -22,18 +22,18 @@ function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (contacts.some(contact => contact.name)) {
-      return Notify.info(`${contact.name} is already in contacts`, {
+    if (contacts.some(contact => contact.name===newContact.name)) {
+      return Notify.info(`${newContact.name} is already in contacts`, {
         timeout: 11000,
       });
     }
 
-    dispatch(contactsOperations.addContact(contact));
+    dispatch(contactsOperations.addContact(newContact));
     reset();
   };
 
   const reset = () => {
-    setContact({ name: '', number: '' });
+    setNewContact({ name: '', number: '' });
   };
 
   return (
@@ -50,7 +50,7 @@ function ContactForm() {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          value={contact.name}
+          value={newContact.name}
           onChange={handleChange}
         />
       </div>
@@ -66,7 +66,7 @@ function ContactForm() {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           id="number"
-          value={contact.number}
+          value={newContact.number}
           onChange={handleChange}
         />
       </div>
